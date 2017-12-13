@@ -19,9 +19,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Timer: 30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U7A-as-CtD">
-                                <rect key="frame" x="652" y="1024" width="123" height="21"/>
+                                <rect key="frame" x="539" y="984" width="275" height="108"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="60"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -35,12 +35,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="669.60000000000002" y="98.50074962518741"/>
+            <point key="canvasLocation" x="669.06474820143887" y="98.201438848920873"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="PWx-Ug-bSE">
             <objects>
-                <viewController id="xwV-E6-T3j" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="scoreBoard" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xwV-E6-T3j" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8fO-dq-SD8">
                         <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

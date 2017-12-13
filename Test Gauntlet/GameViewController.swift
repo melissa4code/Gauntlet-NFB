@@ -14,7 +14,7 @@ import Foundation
 class GameViewController: UIViewController {
 
     @IBOutlet weak var timerLabel: UILabel!
-    timerLabel.font = timerLabel.font.withSize(60)
+    //timerLabel.font = timerLabel.font.withSize(60)
     
 //    timerLabel.fontColor = SKColor.white
 //    timerLabel.fontSize = 60
@@ -75,9 +75,9 @@ class GameViewController: UIViewController {
     }
     @objc func counter() {
         seconds -= 1
-        if seconds < 0 {
+        
+        if seconds <= 0 {
             timer.invalidate()
-            print ("Stop!")
         }
         
         timerLabel.text = String(seconds)

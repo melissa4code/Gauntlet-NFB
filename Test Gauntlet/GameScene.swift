@@ -313,14 +313,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if (contact.bodyA.categoryBitMask == playerCategory) && (contact.bodyB.categoryBitMask == exitCategory){
             //Level Complete
-            let completeMessage = SKLabelNode()
+            /*let completeMessage = SKLabelNode()
             completeMessage.text = "You Win!!!"
             completeMessage.fontColor = SKColor.red
             completeMessage.fontSize = 150
             completeMessage.position = CGPoint(x:15, y: 0)
-            completeMessage.zPosition = 101
+            completeMessage.zPosition = 101*/
             player.removeFromParent()
-            self.addChild(completeMessage)
+            //self.addChild(completeMessage)
         } else if (contact.bodyA.categoryBitMask == playerCategory) && (contact.bodyB.categoryBitMask == itemCategory){
             print("check")
             
@@ -388,6 +388,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         arrow.physicsBody?.collisionBitMask = enemyCategory
         arrow.physicsBody?.contactTestBitMask = enemyCategory
         return arrow
+    }
+    
+    func end() {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "scoreBoard") as! scoreViewController
+        
+        self.presentViewController(vc, animated: false, completion: nil)
     }
 }
 
