@@ -40,7 +40,7 @@
         <!--View Controller-->
         <scene sceneID="PWx-Ug-bSE">
             <objects>
-                <viewController storyboardIdentifier="scoreBoard" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xwV-E6-T3j" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="scoreVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xwV-E6-T3j" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8fO-dq-SD8">
                         <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

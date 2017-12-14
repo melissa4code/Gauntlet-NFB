@@ -391,7 +391,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func end() {
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "scoreBoard") as! scoreViewController
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "scoreVC") as! scoreViewController
         
         self.presentViewController(vc, animated: false, completion: nil)
     }
