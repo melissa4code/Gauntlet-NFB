@@ -16,7 +16,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let title = SKLabelNode()
     var score = SKLabelNode()
     var scoreValue = 0
-    var timerLabel = SKLabelNode()
     
     // Sprite Node Variables
     var player =  SKSpriteNode()
@@ -49,12 +48,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let itemCategory: UInt32 = 0x1 << 4
     let usedItemCategory: UInt32 = 0x1 << 5
     
-    //var timer = Timer()
-    var seconds = 30
-    
-    
-    
-    
     
     // Overridden Functions
     override func update(_ currentTime: TimeInterval) {
@@ -76,18 +69,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //Score
         score.text = "Score: \(scoreValue)"
         score.fontColor = SKColor.white
+        score.fontName = "Futura"
         score.fontSize = 60
         score.position = CGPoint(x:220, y: -400)
         score.zPosition = 100
         self.addChild(score)
-        
-        //Timer
-        timerLabel.text = "Timer: \(seconds)"
-        timerLabel.fontColor = SKColor.white
-        timerLabel.fontSize = 60
-        timerLabel.position = CGPoint(x:220, y: -450)
-        timerLabel.zPosition = 100
-        self.addChild(timerLabel)
         
         //Player - Elf
         player = SKSpriteNode(imageNamed: "Elf Sprite (U)")
@@ -320,6 +306,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             completeMessage.position = CGPoint(x:15, y: 0)
             completeMessage.zPosition = 101*/
             player.removeFromParent()
+            exit.physicsBody?.categoryBitMask = usedItemCategory
+            gameTimer.invalidate()
+            scoreValue += seconds
+            print(seconds)
+            
+            score.text = "Score: \(scoreValue)"
             //self.addChild(completeMessage)
         } else if (contact.bodyA.categoryBitMask == playerCategory) && (contact.bodyB.categoryBitMask == itemCategory){
             print("check")
@@ -393,7 +385,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func end() {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "scoreVC") as! scoreViewController
         
-        self.presentViewController(vc, animated: false, completion: nil)
+        //self.presentViewController(vc, animated: false, completion: nil)
     }
 }
 

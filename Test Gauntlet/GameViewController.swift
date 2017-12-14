@@ -10,28 +10,19 @@ import UIKit
 import SpriteKit
 import GameplayKit
 import Foundation
+var gameTimer = Timer()
+var seconds = 100
 
 class GameViewController: UIViewController {
 
     @IBOutlet weak var timerLabel: UILabel!
-    //timerLabel.font = timerLabel.font.withSize(60)
-    
-//    timerLabel.fontColor = SKColor.white
-//    timerLabel.fontSize = 60
-//    timerLabel.
-    //timerLabel.position = CGPoint(x:220, y: -450)
-    
-    var seconds = 30
-    var timer = Timer()
-    
-    //timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(ViewController.counter)), userInfo: nil, repeats: true)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
         
-        
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(GameViewController.counter), userInfo: nil, repeats: true)
+        gameTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(GameViewController.counter), userInfo: nil, repeats: true)
         
         
         
@@ -77,10 +68,10 @@ class GameViewController: UIViewController {
         seconds -= 1
         
         if seconds <= 0 {
-            timer.invalidate()
+            gameTimer.invalidate()
         }
         
-        timerLabel.text = String(seconds)
+        timerLabel.text = ("Time: \(seconds)")
     }
 }
 
