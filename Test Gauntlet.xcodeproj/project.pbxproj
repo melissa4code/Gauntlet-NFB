@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0346031F1FE2B86800AD67E9 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0346031E1FE2B86800AD67E9 /* StartViewController.swift */; };
+		034603211FE2BDAA00AD67E9 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034603201FE2BDAA00AD67E9 /* TutorialViewController.swift */; };
 		703B600C1FD19B07008E3DD8 /* Exit.png in Resources */ = {isa = PBXBuildFile; fileRef = 703B600B1FD19B07008E3DD8 /* Exit.png */; };
 		707A45001FE16D980016B4D9 /* scoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707A44FF1FE16D980016B4D9 /* scoreViewController.swift */; };
 		70A6AEA01FD6D79A002F3518 /* Character Sprites in Resources */ = {isa = PBXBuildFile; fileRef = 70A6AE9F1FD6D79A002F3518 /* Character Sprites */; };
@@ -26,6 +28,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0346031E1FE2B86800AD67E9 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		034603201FE2BDAA00AD67E9 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		7028AC151FCDA614009BB0F3 /* Dot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Dot.png; sourceTree = "<group>"; };
 		7028AC161FCDA618009BB0F3 /* Right Arrow.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Right Arrow.jpg"; sourceTree = "<group>"; };
 		7028AC171FCDA61B009BB0F3 /* Left Arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Left Arrow.png"; sourceTree = "<group>"; };
@@ -101,7 +105,9 @@
 				70D5B5A21FC862B60003490A /* Actions.sks */,
 				70D5B5A41FC862B60003490A /* GameScene.swift */,
 				707A44FF1FE16D980016B4D9 /* scoreViewController.swift */,
+				0346031E1FE2B86800AD67E9 /* StartViewController.swift */,
 				70D5B5A61FC862B60003490A /* GameViewController.swift */,
+				034603201FE2BDAA00AD67E9 /* TutorialViewController.swift */,
 				70D5B5A81FC862B60003490A /* Main.storyboard */,
 				70D5B5AB1FC862B60003490A /* Assets.xcassets */,
 				7028AC141FCDA5F4009BB0F3 /* Images */,
@@ -196,6 +202,8 @@
 				70D5B5A71FC862B60003490A /* GameViewController.swift in Sources */,
 				70D5B59F1FC862B60003490A /* AppDelegate.swift in Sources */,
 				707A45001FE16D980016B4D9 /* scoreViewController.swift in Sources */,
+				034603211FE2BDAA00AD67E9 /* TutorialViewController.swift in Sources */,
+				0346031F1FE2B86800AD67E9 /* StartViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
