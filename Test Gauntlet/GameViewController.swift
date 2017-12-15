@@ -11,7 +11,7 @@ import SpriteKit
 import GameplayKit
 import Foundation
 var gameTimer = Timer()
-var seconds = 100
+var seconds = 15
 
 class GameViewController: UIViewController {
 
@@ -69,9 +69,30 @@ class GameViewController: UIViewController {
         
         if seconds <= 0 {
             gameTimer.invalidate()
+            pause = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(GameViewController.end), userInfo: nil, repeats: false)
         }
         
         timerLabel.text = ("Time: \(seconds)")
+    }
+    @objc func end() {
+        //let vc = UIStoryboard(name: "Main", bundle: nil)//.instantiateViewController(withIdentifier: "scoreVC") as! scoreViewController
+        //self.presentViewController(vc, animated: false, completion: nil)
+        //let reveal = SKTransition.reveal(with: .down, duration: 1)
+        
+        //let newScene = self.storyboard?.instantiateViewController(withIdentifier: "scoreVC") as! scoreVC
+        //self.present(newScene, animated: true, completion: nil)
+        
+        //Attempt 2
+        /*if let view = self.view as! UIView? {
+            // Load the SKScene from 'GameScene.sks'
+            if let scene = UIViewController(coder: scorevViewController) {
+                // Set the scale mode to scale to fit the window
+                scene.scaleMode = .aspectFill
+                
+                // Present the scene
+                view.presentScene(scene)
+            }
+        }*/
     }
 }
 

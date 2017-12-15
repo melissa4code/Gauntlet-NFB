@@ -10,6 +10,8 @@ import SpriteKit
 import GameplayKit
 import UIKit
 
+var pause = Timer()
+
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // Label Variables
@@ -42,11 +44,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // Bit Masks
     let playerCategory: UInt32 = 0x1 << 0
-    let exitCategory: UInt32 = 0x1 << 1
-    let arrowCategory: UInt32 = 0x1 << 2
-    let enemyCategory: UInt32 = 0x1 << 3
-    let itemCategory: UInt32 = 0x1 << 4
-    let usedItemCategory: UInt32 = 0x1 << 5
+    let arrowCategory: UInt32 = 0x1 << 1
+    let enemyCategory: UInt32 = 0x1 << 2
+    let itemCategory: UInt32 = 0x1 << 3
+    let usedItemCategory: UInt32 = 0x1 << 4
     
     
     // Overridden Functions
@@ -76,7 +77,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(score)
         
         //Player - Elf
-        player = SKSpriteNode(imageNamed: "Elf Sprite (U)")
+        player = createSN(image: "Elf", name: "character", position: CGPoint(x:-330, y:-260), isDynamic: true)
+        
+        
+        /*player = SKSpriteNode(imageNamed: "Elf Sprite (U)")
         player.name = "character"
         player.size = CGSize (width: 50, height: 50)
         player.anchorPoint = CGPoint (x: 0.5, y:0.5)
@@ -88,15 +92,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             physics.isDynamic = true
             physics.linearDamping = 1
             physics.angularDamping = 1
-        }
+        }*/
         player.physicsBody?.usesPreciseCollisionDetection = true
         player.physicsBody?.categoryBitMask = playerCategory
-        player.physicsBody?.collisionBitMask = playerCategory | exitCategory | itemCategory
-        player.physicsBody?.contactTestBitMask = playerCategory | exitCategory | itemCategory
+        player.physicsBody?.collisionBitMask = itemCategory
+        player.physicsBody?.contactTestBitMask = itemCategory
         self.addChild(player)
         
         //Monster - Ghost
-        ghost = SKSpriteNode(imageNamed: "Ghost Sprite (U)")
+        ghost = createSN (image: "Ghost", name: "ghost", position: CGPoint(x: 330, y: -90), isDynamic: false)
+        
+        ghost.physicsBody?.restitution = 0
+        /*ghost = SKSpriteNode(imageNamed: "Ghost Sprite (U)")
         ghost.name = "ghost"
         ghost.size = CGSize (width: 50, height: 50)
         ghost.anchorPoint = CGPoint (x: 0.5, y:0.5)
@@ -110,7 +117,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             physics.linearDamping = 1
             physics.angularDamping = 1
             physics.restitution = 0
-        }
+        }*/
         ghost.physicsBody?.usesPreciseCollisionDetection = true
         ghost.physicsBody?.categoryBitMask = enemyCategory
         ghost.physicsBody?.collisionBitMask = arrowCategory
@@ -118,7 +125,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(ghost)
         
         //Exit
-        exit = SKSpriteNode(imageNamed: "Exit")
+        exit = createSN (image: "Exit", name: "exit", position: CGPoint(x: 330, y: -245), isDynamic: false)
+        /*exit = SKSpriteNode(imageNamed: "Exit")
         exit.name = "end"
         exit.size = CGSize (width: 50, height: 50)
         exit.anchorPoint = CGPoint(x:0.5, y:0.5)
@@ -132,12 +140,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             physics.isDynamic = false
             physics.linearDamping = 1
             physics.angularDamping = 1
-        }
+        }*/
         exit.physicsBody?.usesPreciseCollisionDetection = true
-        exit.physicsBody?.categoryBitMask = exitCategory
+        exit.physicsBody?.categoryBitMask = itemCategory
         self.addChild(exit)
  
-        food = SKSpriteNode(imageNamed: "Food #1")
+        //Food#1
+        food = createSN (image: "Food1", name: "food", position: CGPoint(x: -125, y: 0), isDynamic: false)
+        /*food = SKSpriteNode(imageNamed: "Food #1")
         food.name = "food1"
         food.size = CGSize (width: 50, height: 50)
         food.anchorPoint = CGPoint(x:0.5, y:0.5)
@@ -150,12 +160,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             physics.isDynamic = false
             physics.linearDamping = 1
             physics.angularDamping = 1
-        }
+        }*/
         food.physicsBody?.usesPreciseCollisionDetection = true
         food.physicsBody?.categoryBitMask = itemCategory
         self.addChild(food)
         
-        treasure = SKSpriteNode(imageNamed: "Treasure Sprite")
+        //Treasure
+        treasure = createSN (image: "Treasure", name: "treasure", position: CGPoint(x: 320, y: 430), isDynamic: false)
+        /*treasure = SKSpriteNode(imageNamed: "Treasure Sprite")
         treasure.name = "Treasure"
         treasure.size = CGSize (width: 50, height: 50)
         treasure.anchorPoint = CGPoint(x:0.5, y:0.5)
@@ -168,12 +180,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             physics.isDynamic = false
             physics.linearDamping = 1
             physics.angularDamping = 1
-        }
+        }*/
         treasure.physicsBody?.usesPreciseCollisionDetection = true
         treasure.physicsBody?.categoryBitMask = itemCategory
         self.addChild(treasure)
         
-        key = SKSpriteNode(imageNamed: "Key Sprite")
+        key = createSN (image: "Key", name: "key", position: CGPoint(x: -320, y: 430), isDynamic: false)
+        /*key = SKSpriteNode(imageNamed: "Key Sprite")
         key.name = "Key"
         key.size = CGSize (width: 50, height: 50)
         key.anchorPoint = CGPoint(x:0.5, y:0.5)
@@ -186,7 +199,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             physics.isDynamic = false
             physics.linearDamping = 1
             physics.angularDamping = 1
-        }
+        }*/
         key.physicsBody?.usesPreciseCollisionDetection = true
         key.physicsBody?.categoryBitMask = itemCategory
         self.addChild(key)
@@ -297,26 +310,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let firstNode = contact.bodyA.node as! SKSpriteNode
         let secondNode = contact.bodyB.node as! SKSpriteNode
         
-        if (contact.bodyA.categoryBitMask == playerCategory) && (contact.bodyB.categoryBitMask == exitCategory){
-            //Level Complete
-            /*let completeMessage = SKLabelNode()
-            completeMessage.text = "You Win!!!"
-            completeMessage.fontColor = SKColor.red
-            completeMessage.fontSize = 150
-            completeMessage.position = CGPoint(x:15, y: 0)
-            completeMessage.zPosition = 101*/
-            player.removeFromParent()
-            exit.physicsBody?.categoryBitMask = usedItemCategory
-            gameTimer.invalidate()
-            scoreValue += seconds
-            print(seconds)
-            
-            score.text = "Score: \(scoreValue)"
-            //self.addChild(completeMessage)
-        } else if (contact.bodyA.categoryBitMask == playerCategory) && (contact.bodyB.categoryBitMask == itemCategory){
+        if (contact.bodyA.categoryBitMask == playerCategory) && (contact.bodyB.categoryBitMask == itemCategory){
             print("check")
             
             //scoreValue = scoreValue + 1
+            
+            if secondNode == exit {
+                player.removeFromParent()
+                exit.physicsBody?.categoryBitMask = usedItemCategory
+                gameTimer.invalidate()
+                scoreValue += seconds
+                print(seconds)
+                score.text = "Score: \(scoreValue)"
+                //let newScene = self.storyboard?.instantiateViewController(withIdentifier: "scoreVC") as! scoreViewController
+                //self.present(newScene, animated: true, completion: nil)
+                //pause = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(GameViewController.end), userInfo: nil, repeats: false)
+            }
             
             if secondNode == food {
                 scoreValue = scoreValue + 15
@@ -382,10 +391,35 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         return arrow
     }
     
-    func end() {
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "scoreVC") as! scoreViewController
-        
-        //self.presentViewController(vc, animated: false, completion: nil)
+    func createSN(image: String, name: String, position: CGPoint, isDynamic: Bool) -> SKSpriteNode {
+        var node = SKSpriteNode(imageNamed: image)
+        node.name = name
+        node.size = CGSize (width: 50, height: 50) //Always the same
+        node.anchorPoint = CGPoint (x: 0.5, y:0.5) //Always the same
+        node.position = position
+        node.physicsBody = SKPhysicsBody(texture: SKTexture(imageNamed: image), size: node.size)
+        if isDynamic {
+        if let physics = node.physicsBody {
+            physics.affectedByGravity = false
+            physics.allowsRotation = false
+            physics.isDynamic = true
+            physics.linearDamping = 1
+            physics.angularDamping = 1
+            }
+            
+        }
+        else {
+            if let physics = node.physicsBody {
+                physics.affectedByGravity = false
+                physics.allowsRotation = false
+                physics.isDynamic = false
+                physics.linearDamping = 1
+                physics.angularDamping = 1
+            }
+        }
+        return node
     }
+    
+    
 }
 

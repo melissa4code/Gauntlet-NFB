@@ -8,6 +8,6 @@
 
 import UIKit
 
-class scoreViewController: NSObject {
-
+class scoreViewController: UIViewController {
+    
 }
