@@ -391,6 +391,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         return arrow
     }
     
+<<<<<<< HEAD
     func createSN(image: String, name: String, position: CGPoint, isDynamic: Bool) -> SKSpriteNode {
         var node = SKSpriteNode(imageNamed: image)
         node.name = name
@@ -418,6 +419,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         }
         return node
+=======
+    func end() {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "scoreVC") as! scoreViewController
+        
+//        self.presentViewController(vc, animated: false, completion: nil)
+>>>>>>> 911188cc19b36700a386992c8e29efee6316beec
     }
     
     
